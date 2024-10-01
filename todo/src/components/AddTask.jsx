@@ -1,4 +1,4 @@
-function Header() {
+function AddTask() {
 
     return(
         <header>
@@ -7,4 +7,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default AddTask;
