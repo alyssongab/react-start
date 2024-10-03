@@ -25,6 +25,24 @@ function App() {
       isCompleted: false,
     }
   ]);
+
+  function onTaskClicked(taskId) {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) {
+      
+        // Tarefa precisa ser atualizada
+        return {
+          ...task,
+          isCompleted: !task.isCompleted
+        }
+
+        // Tarefa não precisa ser atualizada
+        return task;
+      }
+    });
+
+    setTasks(newTasks);
+  }
   
   return (
     <div className="w-screen h-screen bg-zinc-900 flex justify-center p-6">
@@ -32,7 +50,7 @@ function App() {
       <div className="w-[500px]">
         <h1 className="text-slate-100 font-bold text-center text-3xl">Task Manager</h1>
         <AddTask />
-        <Tasks tasks={tasks} />
+        <Tasks tasks={tasks} onTaskClicked={onTaskClicked}/>
       </div>
 
     </div>
