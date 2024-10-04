@@ -10,13 +10,13 @@ function App() {
       id: 1,
       title: 'To Study React',
       description: 'Study React to learn how to create web applications',
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 2,
       title: 'Work Meeting',
       description: 'Meeting with the team to discuss the project',
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 3,
@@ -49,12 +49,22 @@ function App() {
     setTasks(newTasks);
   }
 
+  function onTaskAdd(title, description) {
+    const newTask = {
+      id: tasks.length + 1,
+      title,
+      description,
+      isCompleted: false
+    }
+    setTasks([...tasks, newTask]);
+  }
+
   return (
     <div className="w-screen h-screen bg-zinc-900 flex justify-center p-6">
 
-      <div className="w-[500px]">
+      <div className="w-[500px] space-y-4">
         <h1 className="text-slate-100 font-bold text-center text-3xl">Task Manager</h1>
-        <AddTask />
+        <AddTask onTaskAdd={onTaskAdd} />
         <Tasks tasks={tasks} onTaskClicked={onTaskClicked} onTaskDelete={onTaskDelete}/>
       </div>
 
