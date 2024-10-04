@@ -65,7 +65,11 @@ function App() {
       <div className="w-[500px] space-y-4">
         <h1 className="text-slate-100 font-bold text-center text-3xl">Task Manager</h1>
         <AddTask onTaskAdd={onTaskAdd} />
-        <Tasks tasks={tasks} onTaskClicked={onTaskClicked} onTaskDelete={onTaskDelete}/>
+        {tasks.length > 0 ? (
+          <Tasks tasks={tasks} onTaskClicked={onTaskClicked} onTaskDelete={onTaskDelete} />
+        ) : (
+          <p className="text-slate-100 text-center">No tasks available.</p>
+        )}
       </div>
 
     </div>
