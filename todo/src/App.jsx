@@ -5,26 +5,7 @@ import Tasks from './components/Tasks.jsx';
 
 function App() {
 
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: 'To Study React',
-      description: 'Study React to learn how to create web applications',
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: 'Work Meeting',
-      description: 'Meeting with the team to discuss the project',
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      title: 'Take a shower',
-      description: 'Take a shower to relax',
-      isCompleted: false,
-    }
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   function onTaskClicked(taskId) {
     const newTasks = tasks.map(task => {
@@ -65,9 +46,12 @@ function App() {
       <div className="w-[500px] space-y-4">
         <h1 className="text-slate-100 font-bold text-center text-3xl">Task Manager</h1>
         <AddTask onTaskAdd={onTaskAdd} />
-        {tasks.length > 0 ? (
+        {tasks.length > 0 ? 
+        (
           <Tasks tasks={tasks} onTaskClicked={onTaskClicked} onTaskDelete={onTaskDelete} />
-        ) : (
+        ) 
+        : 
+        (
           <p className="text-slate-100 text-center">No tasks available.</p>
         )}
       </div>
