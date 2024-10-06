@@ -1,38 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import AddTask from './components/AddTask.jsx';
 import Tasks from './components/Tasks.jsx';
 
 function App() {
 
-<<<<<<< HEAD
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: 'To Study React',
-      description: 'Study React to learn how to create web applications',
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: 'Work Meeting',
-      description: 'Meeting with the team to discuss the project',
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      title: 'Take a shower',
-      description: 'Take a shower to relax',
-      isCompleted: false,
-    }
-  ]);
-=======
   const [tasks, setTasks] = useState([]);
->>>>>>> 6fc5284a7d13207fed264bd58de7230297732237
+
+  // useEffect executa a função passada como primeiro argumento sempre que
+  // o array passado como segundo argumento sofre alterações
+
+  useEffect(() => {
+    console.log("tasks alterado");
+  }, [tasks]);
 
   function onTaskClicked(taskId) {
     const newTasks = tasks.map(task => {
-      if (tasks.id === taskId) {
+      if (task.id === taskId) {
       
         // Tarefa precisa ser atualizada
         return {
@@ -70,11 +54,11 @@ function App() {
         <h1 className="text-slate-100 font-bold text-center text-3xl">Task Manager</h1>
         <AddTask onTaskAdd={onTaskAdd} />
         {tasks.length > 0 ? 
-        (
+        ( // Se houver tarefa, exibe a lista de tarefas
           <Tasks tasks={tasks} onTaskClicked={onTaskClicked} onTaskDelete={onTaskDelete} />
         ) 
         : 
-        (
+        ( // Se não houver tarefa, exibe uma mensagem
           <p className="text-slate-100 text-center">No tasks available.</p>
         )}
       </div>
