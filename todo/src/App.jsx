@@ -10,13 +10,13 @@ function App() {
       id: 1,
       title: 'To Study React',
       description: 'Study React to learn how to create web applications',
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 2,
       title: 'Work Meeting',
       description: 'Meeting with the team to discuss the project',
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ function App() {
 
   function onTaskClicked(taskId) {
     const newTasks = tasks.map(task => {
-      if (task.id === taskId) {
+      if (tasks.id === taskId) {
       
         // Tarefa precisa ser atualizada
         return {
