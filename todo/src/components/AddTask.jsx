@@ -7,11 +7,11 @@ function AddTask({onTaskAdd}) {
 
     const handleKeyDown = (event) => {
         if(event.key === "Enter") {
-            handleAddTask();
+            handleAddTask(event);
         }
     }
 
-    const handleAddTask = () => {
+    const handleAddTask = (event) => {
         if(!title.trim() || !description.trim()) {
             return alert("Empty Fields!");
         }
@@ -20,7 +20,7 @@ function AddTask({onTaskAdd}) {
             // Limpa os campos
             setTitle("");
             setDescription("");
-
+            event.target.blur();
     }
 
     return(
