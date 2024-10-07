@@ -66,7 +66,7 @@ function App() {
 
   function onTaskAdd(title, description) {
     const newTask = {
-      id: tasks.length + 1,
+      id: Date.now() % 10000,
       title,
       description,
       isCompleted: false
