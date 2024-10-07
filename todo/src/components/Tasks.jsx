@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 function Tasks({tasks, onTaskClicked, onTaskDelete}) {
 
@@ -24,11 +25,13 @@ function Tasks({tasks, onTaskClicked, onTaskDelete}) {
                     {/* {task.isCompleted ? '✔️' : '❌'} */}
                  </button>
                
-                <button onClick={() => onSeeDetailsClick(task)} className="bg-slate-300 p-2 rounded-md hover:scale-105">Details</button>
+                <Button onClick={() => onSeeDetailsClick(task)}>
+                    Details
+                </Button>
                 
-                <button onClick={() => onTaskDelete(task.id)} className="bg-slate-300 p-2 rounded-md hover:scale-105">
+                <Button onClick={() => onTaskDelete(task.id)}>
                     ❌
-                </button>
+                </Button>
             </li>
             )}
 
