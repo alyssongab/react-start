@@ -5,14 +5,41 @@ import Tasks from './components/Tasks.jsx';
 
 function App() {
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState( () => {
+    // Recupera as tarefas salvas no localStorage ou retorna um array vazio
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      return JSON.parse(savedTasks);
+    } else {
+      return [];
+    }
+  });
 
   // useEffect executa a função passada como primeiro argumento sempre que
   // o array passado como segundo argumento sofre alterações
 
   useEffect(() => {
-    console.log("tasks alterado");
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+
+/*   Se o array passado como segundo argumento estiver vazio, a função passada como
+  primeiro argumento é executada apenas uma vez, quando o componente é montado */
+  useEffect(() => {
+    const fetchTasks = async () => {
+      // Chamar a API
+      const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=5");
+
+      // Converter a resposta para JSON
+      const data = await response.json();
+
+      // Atualizar o estado
+      setTasks(data);
+    }
+
+   /*  Se quiser, pode usar uma API para pegas as tarefas
+    fetchTasks(); */
+  }, []);
 
   function onTaskClicked(taskId) {
     const newTasks = tasks.map(task => {
